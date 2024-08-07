@@ -1,113 +1,186 @@
-import Image from "next/image";
+import Image from 'next/image';
+import Font from './fonts';
+
+type LinkProps = {
+  href: string;
+  children: string;
+};
+
+function Link(props: LinkProps) {
+  return (
+    <a
+      className={`${Font.barlow.className} hover:${Font.barlowLight.className}`}
+      href={props.href}
+    >
+      {props.children}
+    </a>
+  );
+}
+
+type CheckerProps = {};
+
+function Checker(props: CheckerProps) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className={`${Font.barlowLight.className} pb-4 text-white`}>
+        Paste your Archway address below to check if you're eligible to mint.
+      </div>
+      <input
+        className="text-white border-2 border-white bg-transparent outline-none rounded-md py-2 px-4 w-[100%] text-center"
+        placeholder="Your Archway Address"
+        type="text"
+      />
+    </div>
+  );
+}
+
+type RoadmapBoxProps = {
+  title: string;
+  children: string | React.ReactNode;
+};
+
+function RoadmapBox(props: RoadmapBoxProps) {
+  return (
+    <div
+      className={`flex flex-col border-white border-2 rounded-md max-w-[300px]`}
+    >
+      <div
+        className={`${Font.barlow.className} bg-white py-2 px-4 text-[#f1490f] text-lg tracking-wide`}
+      >
+        {props.title}
+      </div>
+      <div className={`${Font.barlowLight.className} p-4 text-white`}>
+        {props.children}
+      </div>
+    </div>
+  );
+}
+
+type SectionHeaderProps = {
+  children: string;
+};
+
+function SectionHeader(props: SectionHeaderProps) {
+  return (
+    <div
+      className={`${Font.barlow.className} text-3xl uppercase tracking-widest text-center py-6 text-white`}
+    >
+      {props.children}
+    </div>
+  );
+}
+
+type SneakpeekFrameProps = {
+  url: string;
+};
+
+function SneakpeekFrame(props: SneakpeekFrameProps) {
+  return (
+    <div className="border-4 border-white rounded-xl">
+      <Image
+        className="rounded-md"
+        src={props.url}
+        height={200}
+        width={200}
+        alt="Hello"
+      />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="flex min-h-screen flex-col items-center justify-between w-[100%] md:w-[1000px] px-8 py-16">
+      <section className="flex flex-col items-center justify-center w-[100%]">
+        <div
+          className={`${Font.headhunter.className} text-7xl md:text-8xl text-white text-center`}
+        >
+          Ghouls
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
         <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          className="w-[400px] md:w-[450px]"
+          src="/logo.jpg"
+          height={450}
+          width={450}
+          alt="Hello"
         />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div
+          className={`${Font.barlow.className} border-b-2 border-white pb-8 flex flex-row justify-between gap-x-12 uppercase tracking-wider text-lg md:text-xl text-white`}
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+          <a href="">Benefits</a>
+          <a href="">Sneakpeeks</a>
+          <a href="">Checker</a>
+        </div>
+      </section>
+      <section className="text-white my-8 md:my-12">
+        <div
+          className={`${Font.barlowLight.className} pb-4 flex flex-col text-xl`}
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
+          <p className="text-center">
+            <Link href="">Ghouls</Link> is a new collection launching on{' '}
+            <Link href="https://archway.io/">Archway</Link> created by{' '}
+            <Link href="">CAA Labs</Link>, the team behind{' '}
+            <Link href="https://apello.xyz">Apello</Link>. Join our
+            multi-collection cross-chain family and access exclusive benefits
+            across the <Link href="https://cosmos.network">Cosmos</Link>{' '}
+            ecosystem.
           </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+        </div>
+        <div
+          className={`${Font.barlowLight.className} flex flex-col text-lg items-center`}
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <div className="flex flex-row gap-2">
+            <div className={`${Font.barlow.className}`}>Mint Date:</div>
+            <div>TBA</div>
+          </div>
+          <div className="flex flex-row gap-2">
+            <div className={`${Font.barlow.className}`}>Mint Price:</div>
+            <div>TBA</div>
+          </div>
+          <div className="flex flex-row gap-2">
+            <div className={`${Font.barlow.className}`}>Supply:</div>
+            <div>3210</div>
+          </div>
+          <div className="flex flex-row gap-2">
+            <div className={`${Font.barlow.className}`}>Marketplace:</div>
+            <div>
+              <Link href="https://ambur.xyz">Ambur</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <SectionHeader>Benefits</SectionHeader>
+        <div className="flex flex-row flex-wrap gap-4 justify-center">
+          <RoadmapBox title="Charity 💸">
+            A percentage of revenue will be accumulated for humanitarian aid.
+            Charity to be picked by the team and community.
+          </RoadmapBox>
+          <RoadmapBox title="Sniper Bot 🤖">
+            Receive access to NFT sniper bots for automatically minting and
+            sniping NFT collections on Archway.
+          </RoadmapBox>
+          <RoadmapBox title="Revenue Share 💰">
+            Each NFT grants a share of the revenue from our token creator, coin
+            flip game, and any other future projects.
+          </RoadmapBox>
+          <RoadmapBox title="Other Surprises 🪂">
+            Qualify for airdrops within the Archway community, participate in
+            our memecoin launch, and more...
+          </RoadmapBox>
+        </div>
+      </section>
+      <section>
+        <SectionHeader>Sneakpeeks</SectionHeader>
+        <div className="flex flex-row gap-4">
+          <SneakpeekFrame url="/preview1.jpg" />
+          <SneakpeekFrame url="/preview2.png" />
+        </div>
+      </section>
+      <section>
+        <SectionHeader>Checker</SectionHeader>
+        <Checker />
+      </section>
     </main>
   );
 }
