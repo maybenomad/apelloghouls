@@ -23,7 +23,8 @@ function Checker(props: CheckerProps) {
   return (
     <div className="flex flex-col items-center">
       <div className={`${Font.barlowLight.className} pb-4 text-white`}>
-        Paste your Archway address below to check if you're eligible to mint.
+        Paste your Archway address below to check if you&#39;re eligible to
+        mint.
       </div>
       <input
         className="text-white border-2 border-white bg-transparent outline-none rounded-md py-2 px-4 w-[100%] text-center"
