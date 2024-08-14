@@ -17,8 +17,13 @@ const barlowLight = Barlow({
   weight: '400',
 });
 
+const channelTuning = localFont({
+  src: '../public/Helvetidoodle.ttf',
+});
+
 export default {
   headhunter,
   barlow,
   barlowLight,
+  channelTuning,
 };
