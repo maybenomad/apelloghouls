@@ -58,20 +58,6 @@ function RoadmapBox(props: RoadmapBoxProps) {
   );
 }
 
-type SectionHeaderProps = {
-  children: string;
-};
-
-function SectionHeader(props: SectionHeaderProps) {
-  return (
-    <div
-      className={`${Font.channelTuning.className} text-6xl font-bold uppercase tracking-widest text-center py-6 text-white`}
-    >
-      {props.children}
-    </div>
-  );
-}
-
 type SneakpeekFrameProps = {
   url: string;
 };
@@ -90,7 +76,7 @@ function SneakpeekFrame(props: SneakpeekFrameProps) {
   );
 }
 
-function SectionHead(props: { children: React.ReactNode }) {
+function SectionHeader(props: { children: React.ReactNode }) {
   return (
     <div
       style={{
@@ -101,7 +87,7 @@ function SectionHead(props: { children: React.ReactNode }) {
       className="flex flex-col w-[100%] gap-y-8 text-white md:mt-12 mb-4 border-white border-4 rounded-lg px-8 py-4"
     >
       <div
-        className={`${Font.channelTuning.className} text-6xl font-bold uppercase tracking-widest text-white mt-3`}
+        className={`${Font.channelTuning.className} text-4xl font-bold uppercase tracking-widest text-white mt-3`}
       >
         {props.children}
       </div>
@@ -247,7 +233,7 @@ export default function Home() {
           </div> */}
       </section>
       <section>
-        <SectionHead>Benefits</SectionHead>
+        <SectionHeader>Benefits</SectionHeader>
         <div className="flex flex-row flex-wrap gap-4 justify-center">
           <RoadmapBox title="Charity 💸">
             A percentage of revenue will be accumulated for humanitarian aid.
@@ -268,7 +254,7 @@ export default function Home() {
         </div>
       </section>
       <section className="w-full">
-        <SectionHead>Sneakpeeks</SectionHead>
+        <SectionHeader>Sneakpeeks</SectionHeader>
         <div className="flex flex-row gap-4">
           <SneakpeekFrame url="/preview1.jpg" />
           <SneakpeekFrame url="/preview2.png" />
