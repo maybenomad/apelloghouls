@@ -36,10 +36,11 @@ section {
 }
 
 a {
-  border-bottom: 1px solid rgba(0, 0, 0, 0);
   font-weight: 700;
 }
 
 a:hover {
-  border-bottom: 1px solid white;
+  transform: scale(1.15);
+  transition: all 0.1s ease-in-out;
+  text-decoration: none;
 }

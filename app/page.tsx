@@ -122,68 +122,21 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* <section className="flex flex-col items-center justify-center w-[100%]">
-        <div
-          className={`${Font.headhunter.className} text-7xl md:text-8xl text-white text-center`}
-        >
-          Ghouls
-        </div>
-        <Image
-          className="w-[400px] md:w-[450px]"
-          src="/logo.jpg"
-          height={450}
-          width={450}
-          alt="Hello"
-        />
-        <div
-          className={`${Font.channelTuning.className} pb-8 pt-4 flex flex-row justify-between gap-x-12 uppercase tracking-wider text-2xl md:text-4xl text-white`}
-        >
-          <a
-            className="transform translate-y-[-50px] translate-x-[20px] rotate-[22deg] transition hover:scale-125"
-            href=""
-          >
-            Roadmap
-          </a>
-          <a
-            className="transform translate-x-[10px] transition hover:scale-125"
-            href=""
-          >
-            Sneakpeeks
-          </a>
-          <a
-            className="transform translate-y-[-50px] rotate-[-22deg] transition hover:scale-125"
-            href=""
-          >
-            Checker
-          </a>
-        </div>
-      </section> */}
       <section className="flex flex-row justify-between w-[100%] mt-0 px-4">
         <div
           className={`${Font.channelTuning.className} flex flex-row justify-between gap-x-8 uppercase tracking-wider text-xl md:text-3xl text-white`}
         >
-          <a
-            // className="transform translate-y-[-50px] translate-x-[20px] rotate-[22deg] transition hover:scale-125"
-            href=""
-          >
-            Info
-          </a>
-          <a
-            // className="transform translate-x-[10px] transition hover:scale-125"
-            href=""
-          >
-            Roadmap
-          </a>
-          <a
-            // className="transform translate-y-[-50px] rotate-[-22deg] transition hover:scale-125"
-            href=""
-          >
-            Sneakpeeks
-          </a>
+          <a href="">Info</a>
+          <a href="">Roadmap</a>
+          <a href="">Sneakpeeks</a>
         </div>
         <div className="flex flex-row justify-center gap-x-8 h-[30px]">
-          <Image src="/logo_x.svg" height={30} width={30} alt="X" />
-          <Image src="/logo_discord.svg" height={35} width={35} alt="X" />
+          <a href="https://x.com/TheGhouls_NFT" target="_blank">
+            <Image src="/logo_x.svg" height={30} width={30} alt="X" />
+          </a>
+          <a href="https://discord.gg/caalabs" target="_blank">
+            <Image src="/logo_discord.svg" height={35} width={35} alt="X" />
+          </a>
         </div>
       </section>
       <section
@@ -233,7 +186,7 @@ export default function Home() {
           </div> */}
       </section>
       <section>
-        <SectionHeader>Benefits</SectionHeader>
+        <SectionHeader>Roadmap</SectionHeader>
         <div className="flex flex-row flex-wrap gap-4 justify-center">
           <RoadmapBox title="Charity 💸">
             A percentage of revenue will be accumulated for humanitarian aid.
