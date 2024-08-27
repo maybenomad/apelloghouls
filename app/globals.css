@@ -36,11 +36,20 @@ section {
 }
 
 a {
-  font-weight: 700;
+  text-decoration: underline;
 }
 
 a:hover {
+  text-decoration: none;
+  transition: all 0.1s ease-in-out;
+}
+
+.NavLink {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.NavLink:hover {
   transform: scale(1.15);
   transition: all 0.1s ease-in-out;
-  text-decoration: none;
 }
