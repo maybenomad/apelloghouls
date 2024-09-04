@@ -38,23 +38,113 @@ function Checker(props: CheckerProps) {
   );
 }
 
+// className={`${Font.barlow.className} py-2 px-4 text-[#f1490f] text-lg tracking-wide`}
+
+type FilledRoadmapBoxProps = {
+  image: string;
+  title: string;
+  description: string | React.ReactNode;
+  children?: string | React.ReactNode;
+  empty?: boolean;
+  reversed?: boolean;
+};
+
+function FilledRoadmapBox(props: FilledRoadmapBoxProps) {
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${props.image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        overflow: 'hidden',
+      }}
+      className={`relative flex flex-row ${
+        props.reversed && `flex-row-reverse`
+      } w-[100%] md:w-[80%] py-4 items-center border-4 border-white rounded-xl`}
+    >
+      <div
+        style={{
+          background:
+            'linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent 90%), linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent)',
+        }}
+        className="absolute h-[100%] w-[100%] z-1"
+      ></div>
+      <div className={`z-10 flex flex-col md:basis-2/3`}>
+        <div
+          className={`${
+            Font.channelTuning.className
+          } px-8 py-4 text-white text-3xl tracking-wide ${
+            props.reversed ? 'text-right' : 'text-left'
+          } border-b-4 border-white tracking-widest`}
+        >
+          {props.title}
+        </div>
+        <div
+          className={`${Font.barlowLight.className} p-8 text-white text-lg ${
+            props.reversed ? 'text-right' : 'text-left'
+          }`}
+        >
+          {props.description}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 type RoadmapBoxProps = {
   title: string;
-  children: string | React.ReactNode;
+  description: string | React.ReactNode;
+  children?: string | React.ReactNode;
+  image?: string;
+  empty?: boolean;
+  reversed?: boolean;
 };
 
 function RoadmapBox(props: RoadmapBoxProps) {
   return (
     <div
-      className={`flex flex-col border-white border-2 rounded-md max-w-[300px]`}
+      className={`flex flex-row ${
+        props.reversed && `flex-row-reverse`
+      } w-[95%] md:w-[80%] py-4 items-center`}
     >
-      <div
-        className={`${Font.barlow.className} bg-white py-2 px-4 text-[#f1490f] text-lg tracking-wide`}
-      >
-        {props.title}
+      <div className={`flex flex-col md:basis-2/3 items-`}>
+        <div className="self-center block md:hidden">
+          {/* {props.image && (
+            <Image
+              src={`/${props.image}`}
+              height={150}
+              width={150}
+              alt="lmao"
+            />
+          )} */}
+        </div>
+        <div
+          className={`${
+            Font.channelTuning.className
+          } p-8 text-white text-3xl tracking-wide text-center ${
+            props.reversed ? 'md:text-right' : 'md:text-left'
+          } border-b-4 border-white tracking-widest`}
+        >
+          {props.title}
+        </div>
+        <div
+          className={`${
+            Font.barlowLight.className
+          } p-8 text-white text-lg text-center ${
+            props.reversed ? 'md:text-right' : 'md:text-left'
+          }`}
+        >
+          {props.description}
+        </div>
       </div>
-      <div className={`${Font.barlowLight.className} p-4 text-white`}>
-        {props.children}
+      <div
+        className={`flex flex-col basis-1/3 items-center ${
+          props.reversed ? 'border-r-0' : 'border-l-0'
+        } border-white rounded-lg hidden md:block`}
+      >
+        {props.image && (
+          <Image src={`/${props.image}`} height={300} width={300} alt="lmao" />
+        )}
       </div>
     </div>
   );
@@ -100,7 +190,7 @@ function SectionHeader(props: { children: React.ReactNode }) {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between w-[100%] md:w-[1000px] px-8 py-2 md:py-8">
+    <main className="flex min-h-screen flex-col items-center justify-between w-[100%] md:w-[1100px] px-8 py-2 md:py-8">
       <div className="fixed w-[100%] h-[100%] bg-[url('/background.png')] bg-cover"></div>
       <section
         style={{
@@ -222,22 +312,41 @@ export default function Home() {
       <section>
         <SectionHeader>Roadmap</SectionHeader>
         <div className="flex flex-row flex-wrap gap-4 justify-center">
-          <RoadmapBox title="Charity 💸">
-            A percentage of revenue will be accumulated for humanitarian aid.
-            Charity to be picked by the team and community.
-          </RoadmapBox>
-          <RoadmapBox title="Sniper Bot 🤖">
+          <RoadmapBox
+            reversed
+            title="Sniper Bot"
+            description={`
             Receive access to NFT sniper bots for automatically minting and
-            sniping NFT collections on Archway.
-          </RoadmapBox>
-          <RoadmapBox title="Revenue Share 💰">
+            sniping NFT collections on Archway.`}
+            image="ghoul_robot.png"
+          ></RoadmapBox>
+          <FilledRoadmapBox
+            title="Charity"
+            description={`
+            A percentage of revenue will be accumulated for humanitarian aid.
+            Charity to be picked by the team and community.`}
+            image="ghoul_charity.png"
+          ></FilledRoadmapBox>
+          <RoadmapBox
+            reversed
+            title="Memecoin"
+            description={`
+            The Ghouls community will launch a memecoin on Archway to celebrate
+            the launch of our token creator.`}
+          ></RoadmapBox>
+          <FilledRoadmapBox
+            title="Revenue Share"
+            description={`
             Each NFT grants a share of the revenue from our token creator, coin
-            flip game, and any other future projects.
-          </RoadmapBox>
-          <RoadmapBox title="Other Surprises 🪂">
-            Qualify for airdrops within the Archway community, participate in
-            our memecoin launch, and more...
-          </RoadmapBox>
+            flip game, and any other future projects.`}
+            image="ghoul_flip.png"
+          ></FilledRoadmapBox>
+          <RoadmapBox
+            title="Airdrops"
+            description={`
+            Each Ghoul qualifies for a free mint of ????, a free stack of the
+            upcoming community memecoin, and more...`}
+          ></RoadmapBox>
         </div>
       </section>
       <section className="w-full">
