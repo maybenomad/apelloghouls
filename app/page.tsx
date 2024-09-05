@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Font from './fonts';
+import Checker from './Checker';
 
 type LinkProps = {
   href: string;
@@ -16,29 +17,6 @@ function Link(props: LinkProps) {
     </a>
   );
 }
-
-type CheckerProps = {};
-
-function Checker(props: CheckerProps) {
-  return (
-    <div className="flex flex-col items-center">
-      <div
-        className={`${Font.barlowLight.className} pb-4 text-white text-center`}
-      >
-        Paste your Archway address below to check if you&#39;re eligible to
-        mint.
-      </div>
-      <input
-        className="text-white border-2 border-white outline-none rounded-md py-2 px-4 w-[100%] text-center"
-        style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
-        placeholder="Your Archway Address"
-        type="text"
-      />
-    </div>
-  );
-}
-
-// className={`${Font.barlow.className} py-2 px-4 text-[#f1490f] text-lg tracking-wide`}
 
 type FilledRoadmapBoxProps = {
   image: string;
@@ -60,7 +38,7 @@ function FilledRoadmapBox(props: FilledRoadmapBoxProps) {
       }}
       className={`relative flex flex-row ${
         props.reversed && `flex-row-reverse`
-      } w-[100%] md:w-[80%] py-4 items-center border-4 border-white rounded-xl`}
+      } w-[100%] md:w-[80%] py-4 md:py-8 items-center border-4 border-white rounded-xl`}
     >
       <div
         style={{
@@ -139,7 +117,7 @@ function RoadmapBox(props: RoadmapBoxProps) {
       </div>
       <div
         className={`flex flex-col basis-1/3 items-center ${
-          props.reversed ? 'border-r-0' : 'border-l-0'
+          props.reversed ? 'border-4' : 'border-4'
         } border-white rounded-lg hidden md:block`}
       >
         {props.image && (
@@ -219,13 +197,13 @@ export default function Home() {
         <div
           className={`${Font.channelTuning.className} flex flex-row flex-wrap justify-center md:flex-nowrap md:justify-between gap-x-8 uppercase tracking-wider text-xl md:text-2xl text-white`}
         >
-          <a className="NavLink" href="">
+          <a className="NavLink" href="#info">
             Info
           </a>
-          <a className="NavLink" href="">
+          <a className="NavLink" href="#roadmap">
             Roadmap
           </a>
-          <a className="NavLink" href="">
+          <a className="NavLink" href="#sneakpeeks">
             Sneakpeeks
           </a>
           <a className="NavLink" href="https://archflip.com">
@@ -262,6 +240,7 @@ export default function Home() {
         </div>
       </section>
       <section
+        id="#info"
         style={{
           background: '#f1490f',
           boxShadow: 'inset 0px 0px 15px 5px rgba(0,0,0,0.1)',
@@ -290,35 +269,16 @@ export default function Home() {
           height={240}
           alt="whatever"
         />
-        {/* <div className="flex flex-row gap-2">
-            <div className={`${Font.barlow.className}`}>Mint Date:</div>
-            <div>TBA</div>
-          </div>
-          <div className="flex flex-row gap-2">
-            <div className={`${Font.barlow.className}`}>Mint Price:</div>
-            <div>TBA</div>
-          </div>
-          <div className="flex flex-row gap-2">
-            <div className={`${Font.barlow.className}`}>Supply:</div>
-            <div>3210</div>
-          </div>
-          <div className="flex flex-row gap-2">
-            <div className={`${Font.barlow.className}`}>Marketplace:</div>
-            <div>
-              <Link href="https://ambur.xyz">Ambur</Link>
-            </div>
-          </div> */}
       </section>
-      <section>
+      <section id="roadmap">
         <SectionHeader>Roadmap</SectionHeader>
         <div className="flex flex-row flex-wrap gap-4 justify-center">
           <RoadmapBox
-            reversed
             title="Sniper Bot"
             description={`
             Receive access to NFT sniper bots for automatically minting and
             sniping NFT collections on Archway.`}
-            image="ghoul_robot.png"
+            image="ghoul_bot.png"
           ></RoadmapBox>
           <FilledRoadmapBox
             title="Charity"
@@ -333,6 +293,7 @@ export default function Home() {
             description={`
             The Ghouls community will launch a memecoin on Archway to celebrate
             the launch of our token creator.`}
+            image="ghoul_coin.png"
           ></RoadmapBox>
           <FilledRoadmapBox
             title="Revenue Share"
@@ -346,10 +307,11 @@ export default function Home() {
             description={`
             Each Ghoul qualifies for a free mint of ????, a free stack of the
             upcoming community memecoin, and more...`}
+            image="ghoul_chute.png"
           ></RoadmapBox>
         </div>
       </section>
-      <section className="w-full">
+      <section id="sneakpeeks" className="w-full">
         <SectionHeader>Sneakpeeks</SectionHeader>
         <div className="flex flex-row flex-wrap justify-center gap-4">
           <SneakpeekFrame url="/preview1.jpg" />
